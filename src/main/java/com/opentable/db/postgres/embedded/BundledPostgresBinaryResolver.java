@@ -15,8 +15,11 @@
 package com.opentable.db.postgres.embedded;
 
 import static java.lang.String.format;
+import static org.apache.commons.lang3.StringUtils.lowerCase;
 
 import java.io.InputStream;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Resolves pre-bundled binaries from within the JAR file.
@@ -25,7 +28,7 @@ final class BundledPostgresBinaryResolver implements PgBinaryResolver {
 
     @Override
     public InputStream getPgBinary(String system, String machineHardware) {
-        return EmbeddedPostgres.class.getResourceAsStream(format("/postgresql-%s-%s.txz", system, machineHardware));
+        return EmbeddedPostgres.class.getResourceAsStream(normalize(format("/postgres-%s-%s.txz", system, machineHardware)));
     }
 
     @Override
@@ -39,5 +42,12 @@ final class BundledPostgresBinaryResolver implements PgBinaryResolver {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    private static String normalize(String input) {
+        if (StringUtils.isBlank(input)) {
+            return input;
+        }
+        return lowerCase(input.replace(' ', '_'));
     }
 }
