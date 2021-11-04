@@ -143,19 +143,19 @@
       <groupId>io.zonky.test.postgres</groupId>
       <artifactId>embedded-postgres-binaries-linux-amd64</artifactId>
       <version>${embedded-postgres.version}</version>
-      <scope>test</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>io.zonky.test.postgres</groupId>
       <artifactId>embedded-postgres-binaries-darwin-amd64</artifactId>
       <version>${embedded-postgres.version}</version>
-      <scope>test</scope>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>io.zonky.test.postgres</groupId>
       <artifactId>embedded-postgres-binaries-windows-amd64</artifactId>
       <version>${embedded-postgres.version}</version>
-      <scope>test</scope>
+      <scope>runtime</scope>
     </dependency>
 
 
