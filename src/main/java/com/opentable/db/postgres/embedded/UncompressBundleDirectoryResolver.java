@@ -72,7 +72,10 @@ public class UncompressBundleDirectoryResolver implements PgDirectoryResolver {
             }
 
             final String system = getOS();
-            final String machineHardware = getArchitecture();
+            String machineHardware = getArchitecture();
+            if ("Darwin".equals(system) && "aarch64".equals(machineHardware)) {
+                machineHardware = "x86_64";
+            }
 
             LOG.info("Detected a {} {} system", system, machineHardware);
             File pgDir;
